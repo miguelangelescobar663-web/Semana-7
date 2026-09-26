@@ -5,10 +5,10 @@ Testing Unitario y Tipos de Datos Abstractos Lineales**.
 
 ## Descripción del problema
 
-En el voleibol, el equipo que tiene el servicio debe rotar el orden de saque
-entre sus jugadores. Cada vez que un jugador saca y el equipo mantiene el
-servicio, ese jugador debe volver al final de la fila de rotación para
-esperar su próximo turno. Este comportamiento corresponde exactamente al
+En el voleibol el equipo que tiene el servicio debe rotar el orden de saque
+entre sus jugadores cada vez que un jugador saca y el equipo mantiene el
+servicio ese jugador debe volver al final de la fila de rotación para
+esperar su próximo turno este comportamiento corresponde exactamente al
 funcionamiento de una **Cola (Queue)**: el primer jugador de la fila es el
 primero en sacar (FIFO), y al terminar su turno regresa al final de la fila.
 
@@ -84,4 +84,4 @@ Se incluyen 14 pruebas unitarias que cubren:
 
 ## Autor
 
-[Nombre del estudiante]
+Miguel Angel Escobar Andrade
