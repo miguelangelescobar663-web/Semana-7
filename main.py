@@ -4,7 +4,7 @@ from repository import RotacionSaquesRepository
 
 
 def simular_partido():
-    """Simulación por consola (sin persistencia), útil para pruebas rápidas."""
+    
     print("=== Sistema de Rotación de Saques - Voleibol ===\n")
     repo = RotacionSaquesRepository()
 

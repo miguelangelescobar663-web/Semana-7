@@ -5,12 +5,7 @@ from cola import Cola
 
 
 class RotacionSaquesRepository:
-    """Patrón Repository: encapsula la Cola y la persistencia en un archivo JSON.
 
-    Si se indica ``ruta_archivo``, el orden de rotación se carga al crear el
-    repositorio y se guarda automáticamente después de cada cambio.
-    Si ``ruta_archivo`` es None, trabaja solo en memoria.
-    """
 
     def __init__(self, ruta_archivo=None):
         self._cola = Cola()
