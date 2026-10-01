@@ -25,7 +25,7 @@ class Cola:
         self._cantidad += 1
 
     def desencolar(self):
-        """Elimina y retorna el elemento que está al frente de la cola."""
+        """Elimina y retorna el elemento que está al frente de la cola"""
         if self.esta_vacia():
             raise IndexError("No se puede desencolar: la cola está vacía.")
         nodo_frente = self._frente

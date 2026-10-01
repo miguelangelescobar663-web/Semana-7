@@ -7,7 +7,7 @@ from repository import RotacionSaquesRepository
 
 
 class TestCola(unittest.TestCase):
-    """Pruebas unitarias para la estructura de datos Cola."""
+    """Pruebas unitarias para la estructura de datos Cola"""
 
     def setUp(self):
         self.cola = Cola()

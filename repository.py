@@ -14,7 +14,7 @@ class RotacionSaquesRepository:
 
     # ---------- Persistencia ----------
     def _guardar(self):
-        """Escribe el orden actual de la cola en el archivo JSON."""
+        """Escribe el orden actual de la cola en el archivo JSON"""
         if self._ruta_archivo is None:
             return
         datos = {"jugadores": self._cola.a_lista()}

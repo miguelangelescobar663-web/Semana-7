@@ -11,7 +11,7 @@ def simular_partido():
     jugadores = ["Jugador 1", "Jugador 2", "Jugador 3",
                  "Jugador 4", "Jugador 5", "Jugador 6"]
 
-    print("Formando la alineación inicial del equipo...")
+    print("Formando la alineación inicial del equipo..")
     for jugador in jugadores:
         repo.agregar_jugador(jugador)
     print(f"Orden inicial de rotación: {repo.obtener_orden_actual()}")

@@ -76,7 +76,7 @@ class AplicacionRotacion:
             self._estado("No hay jugadores para retirar.")
             return
         jugador = self.repo.retirar_jugador_actual()
-        self._estado(f"{jugador} salió de la rotación (sustitución).")
+        self._estado(f"{jugador} salió de la rotación (sustitución)")
         self.actualizar_vista()
 
     # ---------- Vista ----------
