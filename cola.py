@@ -49,6 +49,15 @@ class Cola:
         """Retorna la cantidad de elementos almacenados en la cola."""
         return self._cantidad
 
+    def a_lista(self):
+        """Retorna los elementos de la cola, de frente a final, como lista."""
+        elementos = []
+        actual = self._frente
+        while actual is not None:
+            elementos.append(actual.dato)
+            actual = actual.siguiente
+        return elementos
+
     def __len__(self):
         return self._cantidad
 

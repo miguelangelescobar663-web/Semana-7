@@ -1,3 +1,5 @@
+import os
+import tempfile
 import unittest
 
 from cola import Cola
@@ -59,7 +61,7 @@ class TestRotacionSaquesRepository(unittest.TestCase):
     """Pruebas unitarias para el patrón Repository aplicado a la rotación."""
 
     def setUp(self):
-        self.repo = RotacionSaquesRepository()
+        self.repo = RotacionSaquesRepository()  # solo en memoria
         for jugador in ["J1", "J2", "J3", "J4", "J5", "J6"]:
             self.repo.agregar_jugador(jugador)
 
@@ -93,6 +95,47 @@ class TestRotacionSaquesRepository(unittest.TestCase):
         repo_vacio = RotacionSaquesRepository()
         self.assertTrue(repo_vacio.esta_vacia())
         self.assertEqual(repo_vacio.cantidad_jugadores(), 0)
+
+
+class TestPersistencia(unittest.TestCase):
+    """Pruebas de la persistencia de datos en archivo JSON."""
+
+    def setUp(self):
+        carpeta = tempfile.mkdtemp()
+        self.ruta = os.path.join(carpeta, "jugadores.json")
+
+    def test_guarda_y_recupera_jugadores(self):
+        repo = RotacionSaquesRepository(self.ruta)
+        for jugador in ["J1", "J2", "J3"]:
+            repo.agregar_jugador(jugador)
+        recuperado = RotacionSaquesRepository(self.ruta)
+        self.assertEqual(recuperado.obtener_lista_jugadores(), ["J1", "J2", "J3"])
+
+    def test_persiste_la_rotacion(self):
+        repo = RotacionSaquesRepository(self.ruta)
+        for jugador in ["J1", "J2", "J3"]:
+            repo.agregar_jugador(jugador)
+        repo.rotar_saque()
+        recuperado = RotacionSaquesRepository(self.ruta)
+        self.assertEqual(recuperado.obtener_lista_jugadores(), ["J2", "J3", "J1"])
+
+    def test_persiste_el_retiro_de_un_jugador(self):
+        repo = RotacionSaquesRepository(self.ruta)
+        for jugador in ["J1", "J2"]:
+            repo.agregar_jugador(jugador)
+        repo.retirar_jugador_actual()
+        recuperado = RotacionSaquesRepository(self.ruta)
+        self.assertEqual(recuperado.obtener_lista_jugadores(), ["J2"])
+
+    def test_archivo_inexistente_inicia_vacio(self):
+        repo = RotacionSaquesRepository(self.ruta)
+        self.assertTrue(repo.esta_vacia())
+
+    def test_archivo_danado_inicia_vacio(self):
+        with open(self.ruta, "w", encoding="utf-8") as archivo:
+            archivo.write("esto no es json")
+        repo = RotacionSaquesRepository(self.ruta)
+        self.assertTrue(repo.esta_vacia())
 
 
 if __name__ == "__main__":

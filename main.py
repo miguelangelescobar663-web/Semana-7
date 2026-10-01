@@ -1,7 +1,10 @@
+import sys
+
 from repository import RotacionSaquesRepository
 
 
 def simular_partido():
+    """Simulación por consola (sin persistencia), útil para pruebas rápidas."""
     print("=== Sistema de Rotación de Saques - Voleibol ===\n")
     repo = RotacionSaquesRepository()
 
@@ -31,4 +34,8 @@ def simular_partido():
 
 
 if __name__ == "__main__":
-    simular_partido()
+    if "--consola" in sys.argv:
+        simular_partido()
+    else:
+        from gui import iniciar_gui
+        iniciar_gui()
